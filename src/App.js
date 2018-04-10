@@ -21,10 +21,12 @@ class App extends Component {
     return (
       <div className="App">
         <CurrentWeather location={todaysWeather.location}
+                        day={todaysWeather.day}
                         currentTemp={todaysWeather.currentTemp}
                         high={todaysWeather.high}
                         low={todaysWeather.low}
-                        description={todaysWeather.description}/>
+                        description={todaysWeather.description}
+                        weatherIcon={todaysWeather.weatherIcon}/>
 
       </div>
     );
