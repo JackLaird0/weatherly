@@ -8,6 +8,7 @@ class TodaysWeather {
     this.low = Data.forecast.simpleforecast.forecastday[0].low.fahrenheit;
     this.day = Data.forecast.simpleforecast.forecastday[0].date.pretty;
     this.description = Data.forecast.simpleforecast.forecastday[0].conditions;
+    this.weatherIcon = Data.forecast.simpleforecast.forecastday[0].icon_url;
   }
 }
 

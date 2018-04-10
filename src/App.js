@@ -24,7 +24,8 @@ class App extends Component {
                         currentTemp={todaysWeather.currentTemp}
                         high={todaysWeather.high}
                         low={todaysWeather.low}
-                        description={todaysWeather.description}/>
+                        description={todaysWeather.description}
+                        weatherIcon={todaysWeather.weatherIcon}/>
 
       </div>
     );
