@@ -1,18 +1,31 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { TodaysWeather } from './Data-interator'
+import CurrentWeather from './CurrentWeahter'
+
+const todaysWeather = new TodaysWeather()
 
 class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+
+    }
+  }
+
+
   render() {
+    
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <CurrentWeather location={todaysWeather.location}
+                        currentTemp={todaysWeather.currentTemp}
+                        high={todaysWeather.high}
+                        low={todaysWeather.low}
+                        description={todaysWeather.description}/>
+
       </div>
     );
   }
