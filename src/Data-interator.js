@@ -12,4 +12,21 @@ class TodaysWeather {
   }
 }
 
-export  {TodaysWeather}
+class SevenHourForecast{
+  constructor() {
+    this.hour = Data.hourly_forecast[0].FCTTIME.civil
+    this.weatherIcon = Data.hourly_forecast[0].icon_url
+    this.forecastTemp = Data.hourly_forecast[0].temp.english
+  }
+
+  getDataForSeven() {
+    // for over Data.hourly_forecast to find current time based on current/date/time
+      // when found start i at 0 and go up to 7 
+      // place the data in an array to show the date
+      // and magic goes here
+
+  }
+}
+
+export  {TodaysWeather, 
+        SevenHourForecast}
