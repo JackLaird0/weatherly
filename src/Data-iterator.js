@@ -1,33 +1,41 @@
-import Data from './mock-data';
-
 const TodaysWeather = data => {
   return ({
     location: data.current_observation.display_location.full,
     currentTemp: data.current_observation.temp_f,
     high: data.forecast.simpleforecast.forecastday[0].high.fahrenheit,
     low: data.forecast.simpleforecast.forecastday[0].low.fahrenheit,
-    day: data.forecast.simpleforecast.forecastday[0].date.pretty,
+    day: data.forecast.simpleforecast.forecastday[0].date.weekday,
     description: data.forecast.simpleforecast.forecastday[0].conditions,
     weatherIcon: data.forecast.simpleforecast.forecastday[0].icon_url
   })
 }
 
+const SevenHourForecast = data => {
+  const hourlyForecastRawData = data.hourly_forecast.slice(0, 7);
+  let hourlyForecastCleanedData = [];
+  hourlyForecastRawData.forEach( (hour, index) => {
+    let dataObject = {hour: data.hourly_forecast[index].FCTTIME.civil, 
+                      weatherIcon: data.hourly_forecast[index].icon_url,
+                      forecastTemp: data.hourly_forecast[index].temp.english 
+                    }
+    hourlyForecastCleanedData.push(dataObject)
+  })
+  return (
+    hourlyForecastCleanedData
+  )
+}
 
-// class SevenHourForecast{
-//   constructor() {
-//     this.hour = Data.hourly_forecast[0].FCTTIME.civil
-//     this.weatherIcon = Data.hourly_forecast[0].icon_url
-//     this.forecastTemp = Data.hourly_forecast[0].temp.english
-//   }
+const TenDayForecast = data => {
+  let TenDayForecastCleanedData = [];
+  data.forecast.txt_forecast.forecastday.forEach( (day, index) => {
+    let dataObject = {day: day.title,
+                      weatherIcon: day.icon_url,
+                      weather: day.fcttext}
+    TenDayForecastCleanedData.push(dataObject)
+  })
+  return TenDayForecastCleanedData
+}
 
-  // getDataForSeven() {
-  //   // for over Data.hourly_forecast to find current time based on current/date/time
-  //     // when found start i at 0 and go up to 7 
-  //     // place the data in an array to show the date
-  //     // and magic goes here
-
-  // }
-// }
-
-export  {TodaysWeather} 
-        // SevenHourForecast}
+export  {TodaysWeather, 
+        SevenHourForecast,
+        TenDayForecast}
