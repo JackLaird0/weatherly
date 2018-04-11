@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
-import './App.css';
-import { TodaysWeather, SevenHourForecast } from './Data-iterator'
+import './Styles/App.css';
+import { TodaysWeather, SevenHourForecast, TenDayForecast } from './Data-iterator'
 import CurrentWeather from './CurrentWeather'
-// import SevenHour from './SevenHour';
+import SevenHour from './SevenHour';
 import Data from './mock-data';
+import Search from './Search'
+import TenDay from './TenDay'
 
 
 
@@ -15,14 +17,16 @@ class App extends Component {
     super();
 
     this.state = {
-      todaysWeather: TodaysWeather(Data)
-
+      todaysWeather: TodaysWeather(Data),
+      SevenHourForecast: SevenHourForecast(Data),
+      TenDayForecast: TenDayForecast(Data)
     }
   }
 
   render() {
     return (
       <div className="App">
+        <Search />
         <CurrentWeather   
             location={this.state.todaysWeather.location}
             day={this.state.todaysWeather.day}
@@ -30,11 +34,11 @@ class App extends Component {
             high={this.state.todaysWeather.high}
             low={this.state.todaysWeather.low}
             description={this.state.todaysWeather.description}
-            weatherIcon={this.state.todaysWeather.weatherIcon}/>
-        {/* <SevenHourForecast 
-            hour={sevenHourWeather.hour}
-            weatherIcon={sevenHourWeather.weatherIcon}
-          forecastTemp={sevenHourWeather.forecastTemp}/> */}
+            weatherIcon={this.state.todaysWeather.weatherIcon} />
+        <SevenHour
+            SevenHour={this.state.SevenHourForecast} />
+        <TenDay 
+        TenDay={this.state.TenDayForecast} />  
       </div>
     );
   }
