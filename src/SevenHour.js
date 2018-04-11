@@ -1,12 +1,21 @@
 import React from 'react';
 
-export default function SevenHour(props) {
-
+ const SevenHour = props => {
+console.log(props)
+//   return null
   return (
-    <div className="weather-card">
-      <h2> {props.hour} </h2>
-      <h2>{props.weatherIcon}</h2>
-      <h2> {props.forecastTemp} </h2>
+    <div> {
+    props.SevenHour.map( (hourly, index) => {
+    return (
+      <div className="weatherCard">
+        <h2> {hourly.hour} </h2>
+        <img src={hourly.weatherIcon} />
+        <h2> {hourly.forecastTemp} </h2>
+      </div>
+    )})
+  }
     </div>
-  )
+    )
 }
+
+export default SevenHour
