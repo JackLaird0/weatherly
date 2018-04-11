@@ -1,6 +1,6 @@
 import Data from './mock-data';
 
-function TodaysWeather(data) {
+const TodaysWeather = data => {
   return ({
     location: data.current_observation.display_location.full,
     currentTemp: data.current_observation.temp_f,
