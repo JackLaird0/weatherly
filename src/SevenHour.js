@@ -4,7 +4,8 @@ import React from 'react';
 console.log(props)
 //   return null
   return (
-    <div> {
+    <div> 
+    {
     props.SevenHour.map( (hourly, index) => {
     return (
       <div className="weatherCard">

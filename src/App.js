@@ -1,31 +1,41 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './Styles/App.css';
-import { TodaysWeather, SevenHourForecast, TenDayForecast } from './Data-iterator'
+import { TodaysWeather } from './Data-iterator' // , SevenHourForecast, TenDayForecast
 import CurrentWeather from './CurrentWeather'
 import SevenHour from './SevenHour';
-import Data from './mock-data';
+// import Data from './mock-data';
 import Search from './Search'
 import TenDay from './TenDay'
 
-
-
-// const sevenHourWeather = new SevenHourForecast();
-
 class App extends Component {
-  constructor() {
+  constructor(data) {
     super();
 
     this.state = {
-      todaysWeather: TodaysWeather(Data),
-      SevenHourForecast: SevenHourForecast(Data),
-      TenDayForecast: TenDayForecast(Data)
+      todaysWeather: '',
+      SevenHourForecast: '',
+      TenDayForecast: ''
     }
+  }
+
+  componentDidMount() {
+    fetch('http://api.wunderground.com/api/ebc1926fade9895d/forecast/geolookup/conditions/q/CO/Denver.json')
+      .then(promise => promise.json()
+        .then((data) => {
+          this.setState({
+            todaysWeather: TodaysWeather(data)
+            // SevenHourForecast: SevenHourForecast(data),
+            // TenDayForecast: TenDayForecast(data)
+          })
+          console.log(this.state)
+        })).catch(error => console.log('error', error))
   }
 
   render() {
     return (
       <div className="App">
+        {this.componentDidMount()}
         <Search />
         <CurrentWeather   
             location={this.state.todaysWeather.location}
@@ -35,10 +45,10 @@ class App extends Component {
             low={this.state.todaysWeather.low}
             description={this.state.todaysWeather.description}
             weatherIcon={this.state.todaysWeather.weatherIcon} />
-        <SevenHour
+        {/* <SevenHour
             SevenHour={this.state.SevenHourForecast} />
         <TenDay 
-        TenDay={this.state.TenDayForecast} />  
+        TenDay={this.state.TenDayForecast} />   */}
       </div>
     );
   }

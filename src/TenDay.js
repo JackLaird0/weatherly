@@ -4,7 +4,8 @@ const TenDay = props => {
   console.log(props)
   //   return null
     return (
-      <div> {
+      <div> 
+      {
       props.TenDay.map( (daily, index) => {
       return (
         <div className="weatherCard">
