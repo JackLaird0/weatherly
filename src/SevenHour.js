@@ -2,8 +2,6 @@ import React from 'react';
 import './Styles/SevenHour.css'
 
 const SevenHour = props => {
-console.log(props)
-//   return null
   return (
     <div className="hour-container"> 
       <h2 className="title"> Today's Weather </h2> {

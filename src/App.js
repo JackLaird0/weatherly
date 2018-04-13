@@ -31,7 +31,7 @@ class App extends Component {
 
   render() {
     const sevenHour = !this.state.SevenHourForecast ? null : <SevenHour SevenHour={this.state.SevenHourForecast} />;
-    const tenDay = !this.state.TenDayForecast ? null : <TenDay TenDay={this.state.TenDayForecast} /> ;
+    const tenDay = !this.state.TenDayForecast ? null : <TenDay TenDay={this.state.TenDayForecast} />;
     return (
       <div className="App">
         <div className="top-container">
@@ -47,10 +47,8 @@ class App extends Component {
                 weatherIcon={this.state.todaysWeather.weatherIcon} />
           </div>
         { sevenHour }
-       
         </div>
           { tenDay }
-
       </div>
     );
   }
