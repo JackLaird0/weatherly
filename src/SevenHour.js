@@ -7,6 +7,7 @@ console.log(props)
   return (
     <div className="hour-container"> 
       <h2 className="title"> Today's Weather </h2> {
+
     props.SevenHour.map( (hourly, index) => {
     return (
       <div className="hour-card">

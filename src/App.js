@@ -1,29 +1,37 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './Styles/App.css';
-import { TodaysWeather, SevenHourForecast, TenDayForecast } from './Data-iterator'
+import { TodaysWeather, SevenHourForecast, TenDayForecast } from './Data-iterator' // , SevenHourForecast, TenDayForecast
 import CurrentWeather from './CurrentWeather'
 import SevenHour from './SevenHour';
-import Data from './mock-data';
+// import Data from './mock-data';
 import Search from './Search'
 import TenDay from './TenDay'
 
-
-
-// const sevenHourWeather = new SevenHourForecast();
-
 class App extends Component {
-  constructor() {
+  constructor(data) {
     super();
 
     this.state = {
-      todaysWeather: TodaysWeather(Data),
-      SevenHourForecast: SevenHourForecast(Data),
-      TenDayForecast: TenDayForecast(Data)
+      todaysWeather: '',
+      SevenHourForecast: '',
+      TenDayForecast: ''
     }
   }
 
+  componentDidMount() {
+    fetch('https://api.wunderground.com/api/81e7db909187627f/hourly/conditions/forecast10day/q/CO/Colorado%20Springs.json').then( reponse => reponse.json()).then( data => {
+      this.setState({
+        todaysWeather: TodaysWeather(data),
+        SevenHourForecast: SevenHourForecast(data),
+        TenDayForecast: TenDayForecast(data)
+      })
+    }).catch(error => console.log('error', error))
+  }
+
   render() {
+    const sevenHour = !this.state.SevenHourForecast ? null : <SevenHour SevenHour={this.state.SevenHourForecast} />;
+    const tenDay = !this.state.TenDayForecast ? null : <TenDay TenDay={this.state.TenDayForecast} /> ;
     return (
       <div className="App">
         <div className="top-container">
@@ -38,11 +46,11 @@ class App extends Component {
                 description={this.state.todaysWeather.description}
                 weatherIcon={this.state.todaysWeather.weatherIcon} />
           </div>
-          <SevenHour
-              SevenHour={this.state.SevenHourForecast} />
+        { sevenHour }
+       
         </div>
-        <TenDay 
-        TenDay={this.state.TenDayForecast} />  
+          { tenDay }
+
       </div>
     );
   }
