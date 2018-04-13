@@ -1,17 +1,19 @@
 import React from 'react';
+import './Styles/TenDay.css'
 
 const TenDay = props => {
   console.log(props)
   //   return null
     return (
-      <div> 
-      {
+      <div className="day-container"> {
+
       props.TenDay.map( (daily, index) => {
       return (
-        <div className="weatherCard">
-          <h2> {daily.day} </h2>
-          <img src={daily.weatherIcon} />
-          <h2> {daily.weather} </h2>
+        <div className="day-card">
+          <h2 className="day"> {daily.day} </h2>
+          <i className={'wi wi-wu-'+ daily.weatherIcon + ' weather-icon'}> </i>
+          <h2 className="high-low"> <span className="high"> {daily.high}°</span>/ <span className="low">{daily.low}° </span> </h2>
+          
         </div>
       )})
     }
