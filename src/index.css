@@ -1,9 +1,10 @@
 body {
+  height: 100vh;
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background: linear-gradient(#ffd89b , #19547b);
   background-repeat: no-repeat;
-  background-size: stretch; 
-  background-image: url('https://i.pinimg.com/originals/af/16/e6/af16e62a426819683c8de79096768adf.jpg')
+  background-size: cover; 
 }
 
