@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './Styles/App.css';
-import { TodaysWeather } from './Data-iterator' // , SevenHourForecast, TenDayForecast
+import { TodaysWeather, SevenHourForecast, TenDayForecast } from './Data-iterator' // , SevenHourForecast, TenDayForecast
 import CurrentWeather from './CurrentWeather'
 import SevenHour from './SevenHour';
 // import Data from './mock-data';
@@ -20,22 +20,20 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://api.wunderground.com/api/ebc1926fade9895d/forecast/geolookup/conditions/q/CO/Denver.json')
-      .then(promise => promise.json()
-        .then((data) => {
-          this.setState({
-            todaysWeather: TodaysWeather(data)
-            // SevenHourForecast: SevenHourForecast(data),
-            // TenDayForecast: TenDayForecast(data)
-          })
-          console.log(this.state)
-        })).catch(error => console.log('error', error))
+    fetch('https://api.wunderground.com/api/81e7db909187627f/hourly/conditions/forecast10day/q/CO/Colorado%20Springs.json').then( reponse => reponse.json()).then( data => {
+      this.setState({
+        todaysWeather: TodaysWeather(data),
+        SevenHourForecast: SevenHourForecast(data),
+        TenDayForecast: TenDayForecast(data)
+      })
+    }).catch(error => console.log('error', error))
   }
 
   render() {
+    const sevenHour = !this.state.SevenHourForecast ? null : <SevenHour SevenHour={this.state.SevenHourForecast} />;
+    const tenDay = !this.state.TenDayForecast ? null : <TenDay TenDay={this.state.TenDayForecast} /> ;
     return (
       <div className="App">
-        {this.componentDidMount()}
         <Search />
         <CurrentWeather   
             location={this.state.todaysWeather.location}
@@ -45,10 +43,8 @@ class App extends Component {
             low={this.state.todaysWeather.low}
             description={this.state.todaysWeather.description}
             weatherIcon={this.state.todaysWeather.weatherIcon} />
-        {/* <SevenHour
-            SevenHour={this.state.SevenHourForecast} />
-        <TenDay 
-        TenDay={this.state.TenDayForecast} />   */}
+        { sevenHour }
+        { tenDay }
       </div>
     );
   }

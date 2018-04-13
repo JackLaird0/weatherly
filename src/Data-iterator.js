@@ -38,7 +38,7 @@ const TenDayForecast = data => {
   return TenDayForecastCleanedData
 }
 
-export  {TodaysWeather
-        // SevenHourForecast,
-        // TenDayForecast
+export  {TodaysWeather,
+        SevenHourForecast,
+        TenDayForecast
       }
