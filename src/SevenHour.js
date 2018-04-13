@@ -1,12 +1,25 @@
 import React from 'react';
+import './Styles/SevenHour.css'
 
-export default function SevenHour(props) {
-
+const SevenHour = props => {
+console.log(props)
+//   return null
   return (
-    <div className="weather-card">
-      <h2> {props.hour} </h2>
-      <h2>{props.weatherIcon}</h2>
-      <h2> {props.forecastTemp} </h2>
+    <div className="hour-container"> 
+      <h2 className="title"> Today's Weather </h2> {
+    props.SevenHour.map( (hourly, index) => {
+    return (
+      <div className="hour-card">
+        <h2 className="hour"> {hourly.hour} </h2>
+        <div className="temp-icon">
+          <i className= {'wi wi-wu-'+ hourly.weatherIcon + ' weather-icon'}/>
+          <h2 className="hourly-temp"> {hourly.forecastTemp}° F</h2>
+        </div>
+      </div>
+    )})
+  }
     </div>
-  )
+    )
 }
+
+export default SevenHour

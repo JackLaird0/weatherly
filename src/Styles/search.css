@@ -1,0 +1,30 @@
+.search-input {
+  width: 400px;
+  height: 30px;
+  margin: 10px 0 10px 0;
+  border-radius: 10px;
+  font-size: 20px;
+  outline: none;
+  padding: 0 0 0 4px;
+  background-color: #ffffff94;
+}
+
+.search-input::placeholder {
+  font-size: 20px;
+  padding: 0 0 0 4px;
+}
+
+.submit-button {
+  margin: 0 0 0 5px;
+  height: 34px;
+  width: 67px;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: 0.5s;
+  outline: none;
+  background-color: #ffffff94;
+}
+
+.submit-button:hover {
+  box-shadow: inset 1px 1px 1px #464654;
+}

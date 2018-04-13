@@ -1,0 +1,54 @@
+.hour-container {
+  width: 400px;
+  height: 307px;
+  overflow: scroll;
+  background-color:  #100b1d97;
+  border-radius: 10px;
+  margin: 69px 0 0 0;
+  box-shadow: 0 14px 45px #0000006d, 0 18px 45px #0000006d;
+}
+
+.hour-container::-webkit-scrollbar {
+  display: none;
+}
+
+.hour-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: solid 3px #99cfe1a3;;
+}
+
+.temp-icon {
+  display: flex;
+  justify-content: space-around; 
+  align-items: center; 
+  width: 300px;
+}
+
+.weather-icon {
+  font-size: 30px;
+  color: #99cfe1;
+}
+
+.hour,
+.hourly-temp,
+.title {
+  font-family: 'Comfortaa', cursive;
+  color: #99cfe1;
+}
+
+.hour{
+  margin: 10px 0 0 0;
+}
+
+.title {
+  border-bottom: solid 3px #99cfe1a3;
+  margin: 5px 0 0 0;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* width: 100%; */
+  /* position: fixed; */
+}

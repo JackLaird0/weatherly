@@ -1,4 +1,56 @@
 .weather-card {
-  background-color: #000000ba;
-  width: 800px;
+  background-color: #100b1d97;
+  width: 600px;
+  height: 307px;
+  border-radius: 10px;
+  margin: 15px 0 0 0;
+  box-shadow: 0 14px 45px #0000006d, 0 18px 45px #0000006d;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+p {
+  color: #99cfe1;
+  font-family: 'Comfortaa', cursive;
+}
+
+.location {
+  font-size: 25px;
+  margin: 20px 0 10px 0;
+}
+
+.week-day {
+  font-size: 23px;
+  margin: 10px 0 5px 0;
+}
+
+.current-temp-icon {
+  font-size: 50px;
+  color: #99cfe1;
+  margin: 10px 0 10px 0;
+}
+
+.description {
+  font-size: 19px;
+  margin: 0 0 20px 0;
+
+}
+
+.temp {
+  font-size: 33px;
+  margin: 0 0 10px 0;
+}
+
+.high-low {
+  font-size: 20px;
+  margin: 10px 0 15px 0;
+}
+
+.low {
+  color:  #2aaad5
+}
+
+.high {
+  color: #f7b335
 }

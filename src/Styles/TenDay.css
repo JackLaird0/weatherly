@@ -1,0 +1,26 @@
+.day-container {
+  display: flex;
+  background-color: #100b1d97;
+  box-shadow: 0 14px 45px #0000006d, 0 18px 45px #0000006d;
+  margin: 100px 0 0 0;
+  border-radius: 10px;
+  width: 1300px;
+  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.day-card {
+  /* margin: 10px; */
+}
+
+.day,
+.high-low {
+  color: #99cfe1;
+  font-family: 'Comfortaa', cursive;
+  /* margin: 8px 0 0 0; */
+}
+
+.day {
+  font-size: 20px;
+}
