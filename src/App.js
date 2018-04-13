@@ -26,17 +26,21 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Search />
-        <CurrentWeather   
-            location={this.state.todaysWeather.location}
-            day={this.state.todaysWeather.day}
-            currentTemp={this.state.todaysWeather.currentTemp}
-            high={this.state.todaysWeather.high}
-            low={this.state.todaysWeather.low}
-            description={this.state.todaysWeather.description}
-            weatherIcon={this.state.todaysWeather.weatherIcon} />
-        <SevenHour
-            SevenHour={this.state.SevenHourForecast} />
+        <div className="top-container">
+          <div className="search-current">
+            <Search />
+            <CurrentWeather   
+                location={this.state.todaysWeather.location}
+                day={this.state.todaysWeather.day}
+                currentTemp={this.state.todaysWeather.currentTemp}
+                high={this.state.todaysWeather.high}
+                low={this.state.todaysWeather.low}
+                description={this.state.todaysWeather.description}
+                weatherIcon={this.state.todaysWeather.weatherIcon} />
+          </div>
+          <SevenHour
+              SevenHour={this.state.SevenHourForecast} />
+        </div>
         <TenDay 
         TenDay={this.state.TenDayForecast} />  
       </div>
