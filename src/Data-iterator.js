@@ -1,7 +1,5 @@
 const TodaysWeather = data => {
-  console.log('hi')
   return ({
-    // data.location.city
     location: data.current_observation.display_location.full,
     currentTemp: data.current_observation.temp_f,
     high: data.forecast.simpleforecast.forecastday[0].high.fahrenheit,
@@ -15,6 +13,7 @@ const TodaysWeather = data => {
 const SevenHourForecast = data => {
   const hourlyForecastRawData = data.hourly_forecast.slice(0, 7);
   let hourlyForecastCleanedData = [];
+
   hourlyForecastRawData.forEach( (hour, index) => {
     let dataObject = {hour: data.hourly_forecast[index].FCTTIME.civil, 
                       weatherIcon: data.hourly_forecast[index].icon,
@@ -39,7 +38,8 @@ const TenDayForecast = data => {
   return TenDayForecastCleanedData
 }
 
-export  {TodaysWeather,
-        SevenHourForecast,
-        TenDayForecast
-      }
+export {
+  TodaysWeather,
+  SevenHourForecast,
+  TenDayForecast
+}
