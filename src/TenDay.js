@@ -6,6 +6,7 @@ const TenDay = props => {
   //   return null
     return (
       <div className="day-container"> {
+
       props.TenDay.map( (daily, index) => {
       return (
         <div className="day-card">

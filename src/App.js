@@ -9,18 +9,31 @@ import TenDay from './TenDay';
 import Welcome from './Welcome';
 
 class App extends Component {
-  constructor() {
+  constructor(data) {
     super();
 
     this.state = {
-      todaysWeather: TodaysWeather(Data),
-      SevenHourForecast: SevenHourForecast(Data),
-      TenDayForecast: TenDayForecast(Data),
+      todaysWeather: '',
+      SevenHourForecast: '',
+      TenDayForecast: '',
       WelcomeScreen: false
     }
   }
-  
+
+  componentDidMount() {
+    fetch('https://api.wunderground.com/api/81e7db909187627f/hourly/conditions/forecast10day/q/CO/Colorado%20Springs.json').then( reponse => reponse.json()).then( data => {
+      this.setState({
+        todaysWeather: TodaysWeather(data),
+        SevenHourForecast: SevenHourForecast(data),
+        TenDayForecast: TenDayForecast(data)
+      })
+    }).catch(error => console.log('error', error))
+  }
+
+
   render() {
+    const sevenHour = !this.state.SevenHourForecast ? null : <SevenHour SevenHour={this.state.SevenHourForecast} />;
+    const tenDay = !this.state.TenDayForecast ? null : <TenDay TenDay={this.state.TenDayForecast} /> ;
     const showWeather =
     <div>
       <div className="top-container">
@@ -35,12 +48,10 @@ class App extends Component {
               description={this.state.todaysWeather.description}
               weatherIcon={this.state.todaysWeather.weatherIcon} />
         </div>
-        <SevenHour
-            SevenHour={this.state.SevenHourForecast} />
+        { sevenHour }
       </div>
       <div className="tenday-forecast">
-        <TenDay 
-        TenDay={this.state.TenDayForecast} />  
+        { tenDay }
       </div>
     </div>
 

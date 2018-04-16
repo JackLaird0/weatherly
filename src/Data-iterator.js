@@ -1,5 +1,7 @@
 const TodaysWeather = data => {
+  console.log('hi')
   return ({
+    // data.location.city
     location: data.current_observation.display_location.full,
     currentTemp: data.current_observation.temp_f,
     high: data.forecast.simpleforecast.forecastday[0].high.fahrenheit,
@@ -37,6 +39,7 @@ const TenDayForecast = data => {
   return TenDayForecastCleanedData
 }
 
-export  {TodaysWeather, 
+export  {TodaysWeather,
         SevenHourForecast,
-        TenDayForecast}
+        TenDayForecast
+      }
