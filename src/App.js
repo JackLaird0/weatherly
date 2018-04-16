@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './Styles/App.css';
 import { TodaysWeather, SevenHourForecast, TenDayForecast } from './Data-iterator';
+import {  apiKey, cityState } from './API-info'
 import CurrentWeather from './CurrentWeather';
 import SevenHour from './SevenHour';
-import Data from './mock-data';
+// import Data from './mock-data';
 import Search from './Search';
 import TenDay from './TenDay';
 import Welcome from './Welcome';
@@ -16,19 +17,40 @@ class App extends Component {
       todaysWeather: '',
       SevenHourForecast: '',
       TenDayForecast: '',
-      WelcomeScreen: false
+      WelcomeScreen: true,
     }
+
+    this.updateLocation = this.updateLocation.bind(this)
+    // this.componentDidMount = this.componentDidMount.bind(this)
   }
 
-  componentDidMount() {
-    fetch('https://api.wunderground.com/api/81e7db909187627f/hourly/conditions/forecast10day/q/CO/Colorado%20Springs.json').then( reponse => reponse.json()).then( data => {
+checkStorage() {
+  if (localStorage.location) {
+    const retrieveLocation = JSON.parse(localStorage.getItem('location'));
+    return retrieveLocation;
+  } else {
+    return false;
+  }
+}
+
+updateLocation (location) {
+  const localLocation = JSON.stringify(location)
+  localStorage.setItem('location', localLocation)
+
+  fetch(`https://api.wunderground.com/api/${apiKey()}/hourly/conditions/forecast10day/q/${location.split(', ')[1]}/${location.split(', ')[0]}.json`).then( reponse => reponse.json()).then( data => {
       this.setState({
         todaysWeather: TodaysWeather(data),
         SevenHourForecast: SevenHourForecast(data),
-        TenDayForecast: TenDayForecast(data)
+        TenDayForecast: TenDayForecast(data),
+        WelcomeScreen: false
       })
-    }).catch(error => console.log('error', error))
-  }
+    }).catch(error => alert(error , error))
+}
+
+componentDidMount() {
+
+  this.checkStorage() ? this.updateLocation(this.checkStorage()) : this.setState( {WelcomeScreen: true})
+}
 
 
   render() {
@@ -38,7 +60,7 @@ class App extends Component {
     <div>
       <div className="top-container">
         <div className="search-current">
-          <Search />
+          <Search updateLocation={this.updateLocation} />
           <CurrentWeather   
               location={this.state.todaysWeather.location}
               day={this.state.todaysWeather.day}
@@ -58,7 +80,7 @@ class App extends Component {
     const showWelcome =
     <div className="Welcome-screen">
       <Welcome />
-      <Search />
+      <Search updateLocation={this.updateLocation}/>
     </div>
 
     return (
@@ -66,6 +88,7 @@ class App extends Component {
        {this.state.WelcomeScreen ? showWelcome : showWeather}
       </div>
     );
+    console.log()
   }
 }
 
