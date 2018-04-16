@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import './Styles/search.css'
 
 class Search extends Component {
-  constructor() {
+  constructor(props) {
     super();
 
+    
     this.state = {
       cityData: '',
       cityArray: []
@@ -23,15 +24,21 @@ class Search extends Component {
   saveUserInput(e) {
     this.setState({cityData: e.target.value});
   }
-
-
+  
+  
   render() {
     return (
       <div>
-        <input type="text" placeholder="Search for your city" className="search-input" onChange={this.saveUserInput} /> 
-        <button className="submit-button" onClick={this.saveCity}> Submit </button>
+        <form>                                                   
+          <input type="text" placeholder="Search for your city" className="search-input" onChange={this.saveUserInput} value={this.state.cityData}/> 
+          <input className="submit-button" type="submit" onClick= {(e) => {
+            e.preventDefault();
+            this.props.updateLocation(this.state.cityData)
+          }} />
+        </form>
       </div>
     )
+    debugger
   }
 }
 

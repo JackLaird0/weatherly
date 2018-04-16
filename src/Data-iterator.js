@@ -1,5 +1,4 @@
 const TodaysWeather = data => {
-  console.log('hi')
   return ({
     // data.location.city
     location: data.current_observation.display_location.full,
