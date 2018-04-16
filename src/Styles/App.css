@@ -4,7 +4,9 @@
   text-align: center;
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
+  height: 100vh;
 }
 
 .top-container {
@@ -17,4 +19,18 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+
+.tenday-forecast {
+  display: flex;
+  justify-content: center;
+}
+
+.welcome-screen {
+  height: 100vh;
+  width: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

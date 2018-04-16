@@ -13,12 +13,12 @@ const TodaysWeather = data => {
 const SevenHourForecast = data => {
   const hourlyForecastRawData = data.hourly_forecast.slice(0, 7);
   let hourlyForecastCleanedData = [];
-  hourlyForecastRawData.forEach((hour, index) => {
-    let dataObject = {
-      hour: data.hourly_forecast[index].FCTTIME.civil,
-      weatherIcon: data.hourly_forecast[index].icon,
-      forecastTemp: data.hourly_forecast[index].temp.english
-    }
+
+  hourlyForecastRawData.forEach( (hour, index) => {
+    let dataObject = {hour: data.hourly_forecast[index].FCTTIME.civil, 
+                      weatherIcon: data.hourly_forecast[index].icon,
+                      forecastTemp: data.hourly_forecast[index].temp.english 
+                    }
     hourlyForecastCleanedData.push(dataObject)
   })
   return (
@@ -28,13 +28,11 @@ const SevenHourForecast = data => {
 
 const TenDayForecast = data => {
   let TenDayForecastCleanedData = [];
-  data.forecast.simpleforecast.forecastday.forEach((day, index) => {
-    let dataObject = {
-      day: day.date.weekday,
-      weatherIcon: day.icon,
-      high: day.high.fahrenheit,
-      low: day.low.fahrenheit
-    }
+  data.forecast.simpleforecast.forecastday.forEach( (day, index) => {
+    let dataObject = {day: day.date.weekday,
+                      weatherIcon: day.icon,
+                      high: day.high.fahrenheit,
+                      low: day.low.fahrenheit}
     TenDayForecastCleanedData.push(dataObject)
   })
   return TenDayForecastCleanedData
