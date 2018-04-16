@@ -8,6 +8,12 @@
   justify-content: center;
   justify-content: space-around;
   align-items: center;
+  transition: 0.8s;
+}
+
+.day-container:hover {
+  background-color: #100b1d84;
+  box-shadow: 0 10px 40px #0000006d, 0 13px 40px #0000006d;
 }
 
 .day-card {
