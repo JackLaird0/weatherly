@@ -6,6 +6,12 @@
   border-radius: 10px;
   margin: 69px 0 0 0;
   box-shadow: 0 14px 45px #0000006d, 0 18px 45px #0000006d;
+  transition: 0.8s;
+}
+
+.hour-container:hover {
+  background-color: #100b1d84;
+  box-shadow: 0 10px 40px #0000006d, 0 13px 40px #0000006d;
 }
 
 .hour-container::-webkit-scrollbar {
