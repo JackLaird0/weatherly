@@ -59,3 +59,10 @@ p {
 .high {
   color: #f7b335
 }
+
+@media (max-width: 1054px) {
+  .weather-card {
+    width: 410px;
+    height: 307px;
+  }
+}
