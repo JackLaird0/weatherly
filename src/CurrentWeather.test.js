@@ -4,21 +4,48 @@ import CurrentWeather from './CurrentWeather';
 import App from './App';
 
 describe('Current Weather', () => {
-  let renderedApp;
+  let wrapper;
+  let props;
 
   beforeEach(() => {
-    const props = { todaysWeather: '', 
-                    SevenHourForecast: '',
-                    TenDayForecast: '',
-                    WelcomeScreen: false
-                  } 
+    props = {
+      location: 'aromas, ca',
+      day: 'monday',
+      currentTemp: 68,
+      high: 78,
+      low: 35,
+      description: 'sunny with some clouds',
+      weatherIcon: 'img.png',
+    };
 
-    renderedApp = shallow(<App {...props }/>); //can pass in data here
+    wrapper = shallow(<CurrentWeather location={props.location}
+      day={props.day}
+      currentTemp={props.currentTemp}
+      high={props.high}
+      low={props.low}
+      description={props.description}
+      weatherIcon={props.weatherIcon} />);
   });
 
   it('should take in props', () => {
-    expect(renderedApp).toEqual(undefined)
+    expect(wrapper.find('div.weather-card')).toHaveLength(1);
   });
 
+  it('should display the current data', () => {
+    let expectation = ' aromas, ca ';
 
+    expect(wrapper.find('p.location').text()).toEqual(expectation);
+  });
+
+  it('should show the current temp', () => {
+    let expectation = ' 68° F ';
+
+    expect(wrapper.find('p.temp').text()).toEqual(expectation);
+  });
+
+  it('should show a description of the weather', () => {
+    let expectation = ' sunny with some clouds ';
+
+    expect(wrapper.find('p.description').text()).toEqual(expectation);
+  });
 });

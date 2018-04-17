@@ -6,8 +6,14 @@ import App from './App';
 describe('App test', () => {
   let renderedApp;
 
+  window.localStorage = {
+    getItem: jest.fn(),
+    setItem: jest.fn(),
+    removeItem: jest.fn(),
+  }
+
   beforeEach(() => {
-    renderedApp = shallow(<App />); //can pass in data here
+    renderedApp = shallow(<App />);
   });
 
   it('should exist', () => {
@@ -19,20 +25,12 @@ describe('App test', () => {
       todaysWeather: '',
       SevenHourForecast: '',
       TenDayForecast: '',
-      WelcomeScreen: false
+      WelcomeScreen: true,
     };
 
     expect(renderedApp.state()).toEqual(expectation);
   });
 
-  it('should update the welcome scrren to true if location is passed in', () => {
-    let mockPropFunc = jest.fn();
-    let changed = mockPropFunc.instance()
-    const expectation = true
-
-    expect(changed.state().WelcomeScreen).toEqual(expectation);
-  });
-
+  // update location
 });
 
-// npm test -- --coverage
