@@ -6,8 +6,6 @@ import './Styles/search.css';
 const tree = new Trie();
 tree.populate(Cities.city);
 
-// import tree from './Trie';
-
 class Search extends Component {
   constructor(props) {
     super();
@@ -28,8 +26,8 @@ class Search extends Component {
   }
 
   saveUserInput(e) {
-    this.setState({ 
-      cityData: e.target.value 
+    this.setState({
+      cityData: e.target.value,
     });
   }
 
@@ -37,28 +35,27 @@ class Search extends Component {
     tree.suggest(this.state.cityData);
     let suggest = null;
     if (tree.suggestArr) {
-      suggest = tree.suggestArr.map((word, index) => {
-        return (<option key={index}>{word}</option>)
-      })
+      suggest = tree.suggestArr.map((word, index) => (<option key={index}>{word}</option>));
     }
 
     return (
       <div>
         <form>
-          <input type="text" 
-            list='city'
-            placeholder="Search for your city" 
-            className="search-input" 
-            onChange={this.saveUserInput} v
-            alue={this.state.cityData} 
-            />
-          <datalist id='city'>
+          <input
+            type="text"
+            list="city"
+            placeholder="Search for your city"
+            className="search-input"
+            onChange={this.saveUserInput}
+            alue={this.state.cityData}
+          />
+          <datalist id="city">
             {suggest}
           </datalist>
           <input
             className="submit-button"
             type="submit"
-            onClick= {(e) => {
+            onClick={(e) => {
             e.preventDefault();
             this.props.updateLocation(this.state.cityData);
           }}
