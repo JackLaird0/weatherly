@@ -1,8 +1,7 @@
 import React from 'react';
-import './Styles/SevenHour.css'
+import './Styles/SevenHour.css';
 
-const SevenHour = props => {
-  return (
+const SevenHour = (props) => (
     <div className="hour-container">
       <h2 className="title"> Today's Weather Hourly </h2> {
         props.SevenHour.map((hourly, index) => {
@@ -18,7 +17,6 @@ const SevenHour = props => {
         })
       }
     </div>
-  )
-}
+  );
 
 export default SevenHour;
