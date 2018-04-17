@@ -28,7 +28,7 @@ describe('Current Weather', () => {
   });
 
   it('should take in props', () => {
-    expect(wrapper.find('div.weather-card').length).toEqual(1);
+    expect(wrapper.find('div.weather-card')).toHaveLength(1);
   });
 
   it('should display the current data', () => {

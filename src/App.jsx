@@ -62,8 +62,8 @@ class App extends Component {
     />);
 
     const sevenHour = !this.state.SevenHourForecast ? null : (<SevenHour
-      SevenHour={SevenHourForecast}
-    />);
+        SevenHour={SevenHourForecast}
+        />);
 
     const tenDay = !this.state.TenDayForecast ? null : <TenDay TenDay={TenDayForecast} />;
     const showWeather = (

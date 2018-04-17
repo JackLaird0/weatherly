@@ -6,7 +6,7 @@ describe('App test', () => {
   let renderedApp;
 
   beforeEach(() => {
-    renderedApp = shallow(<App />); //can pass in data here
+    renderedApp = shallow(<App />);
   });
 
   it('should exist', () => {
