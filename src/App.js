@@ -54,21 +54,30 @@ componentDidMount() {
 
 
   render() {
-    const sevenHour = !this.state.SevenHourForecast ? null : <SevenHour SevenHour={this.state.SevenHourForecast} />;
-    const tenDay = !this.state.TenDayForecast ? null : <TenDay TenDay={this.state.TenDayForecast} /> ;
+    const { todaysWeather, SevenHourForecast, TenDayForecast } = this.state;
+    const currentW = !todaysWeather ? null 
+                                    : <CurrentWeather
+                                      location={todaysWeather.location}
+                                      day={todaysWeather.day}
+                                      currentTemp={todaysWeather.currentTemp}
+                                      high={todaysWeather.high}
+                                      low={todaysWeather.low}
+                                      description={todaysWeather.description}
+                                      weatherIcon={todaysWeather.weatherIcon}
+                                       />;
+    const sevenHour = !SevenHourForecast ? null 
+                                         : <SevenHour SevenHour={SevenHourForecast} 
+                                          />;
+    const tenDay = !TenDayForecast ? null 
+                                   : <TenDay TenDay={TenDayForecast} 
+                                    /> ;
+
     const showWeather =
     <div>
       <div className="top-container">
         <div className="search-current">
-          <Search updateLocation={this.updateLocation} />
-          <CurrentWeather   
-              location={this.state.todaysWeather.location}
-              day={this.state.todaysWeather.day}
-              currentTemp={this.state.todaysWeather.currentTemp}
-              high={this.state.todaysWeather.high}
-              low={this.state.todaysWeather.low}
-              description={this.state.todaysWeather.description}
-              weatherIcon={this.state.todaysWeather.weatherIcon} />
+          <Search />
+          { currentW }
         </div>
         { sevenHour }
       </div>
