@@ -8,7 +8,7 @@ const SevenHour = props => {
 
     props.SevenHour.map( (hourly, index) => {
     return (
-      <div className="hour-card">
+      <div className="hour-card" key={index}>
         <h2 className="hour"> {hourly.hour} </h2>
         <div className="temp-icon">
           <i className= {'wi wi-wu-'+ hourly.weatherIcon + ' weather-icon'}/>
