@@ -30,3 +30,25 @@
 .day {
   font-size: 20px;
 }
+
+@media (max-width: 1313px) {
+  .day {
+    font-size: 15px;
+  }
+
+  .day-container {
+    width: 1000px;
+    margin: 50px 0 0 0;
+  }
+}
+
+@media (max-width: 1010px) {
+  .day-container {
+    overflow: scroll;
+  }
+
+  .day-card {
+    margin: 10px;
+    width: 100px;
+  }
+}

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import './Styles/App.css';
 import { TodaysWeather, SevenHourForecast, TenDayForecast } from './Data-iterator';
-import {  apiKey, cityState } from './API-info'
+import { apiKey } from './API-info';
 import CurrentWeather from './CurrentWeather';
 import SevenHour from './SevenHour';
-// import Data from './mock-data';
 import Search from './Search';
 import TenDay from './TenDay';
 import Welcome from './Welcome';
@@ -17,11 +16,10 @@ class App extends Component {
       todaysWeather: '',
       SevenHourForecast: '',
       TenDayForecast: '',
-      WelcomeScreen: true,
+      WelcomeScreen: true 
     }
 
     this.updateLocation = this.updateLocation.bind(this)
-    // this.componentDidMount = this.componentDidMount.bind(this)
   }
 
 checkStorage() {
@@ -81,7 +79,7 @@ componentDidMount() {
     <div className="Welcome-screen">
       <Welcome />
       <Search updateLocation={this.updateLocation}/>
-    </div>
+    </div>    
 
     return (
       <div className="App">
