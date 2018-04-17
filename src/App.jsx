@@ -35,17 +35,21 @@ class App extends Component {
   }
 
   updateLocation(location) {
-    const localLocation = JSON.stringify(location);
-    localStorage.setItem('location', localLocation);
+    
 
-    fetch(`https://api.wunderground.com/api/${apiKey()}/hourly/conditions/forecast10day/q/${location.split(', ')[1]}/${location.split(', ')[0]}.json`).then(reponse => reponse.json()).then((data) => {
-      this.setState({
-        todaysWeather: TodaysWeather(data),
-        SevenHourForecast: SevenHourForecast(data),
-        TenDayForecast: TenDayForecast(data),
-        WelcomeScreen: false,
-      });
-    }).catch(error => alert(error, error));
+    fetch(`https://api.wunderground.com/api/${apiKey()}/hourly/conditions/forecast10day/q/${location.split(', ')[1]}/${location.split(', ')[0]}.json`)
+      .then(reponse => reponse.json())
+      .then((data) => {
+        this.setState({
+          todaysWeather: TodaysWeather(data),
+          SevenHourForecast: SevenHourForecast(data),
+          TenDayForecast: TenDayForecast(data),
+          WelcomeScreen: false,
+        });
+        const localLocation = JSON.stringify(location);
+        localStorage.setItem('location', localLocation);
+      })
+      .catch(error => alert(error, error));
   }
 
   render() {

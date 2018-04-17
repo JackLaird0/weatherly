@@ -16,7 +16,5 @@ describe('Ten Day Weather', () => {
     expect(wrapper.find('input.search-input').text()).toEqual('');
   });
 
-  it('should have a default state of empty', () => {
-    
-  });
+
 });

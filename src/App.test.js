@@ -5,6 +5,12 @@ import App from './App';
 describe('App test', () => {
   let renderedApp;
 
+  window.localStorage = {
+    getItem: jest.fn(),
+    setItem: jest.fn(),
+    removeItem: jest.fn(),
+  }
+
   beforeEach(() => {
     renderedApp = shallow(<App />);
   });
@@ -24,9 +30,5 @@ describe('App test', () => {
     expect(renderedApp.state()).toEqual(expectation);
   });
 
-  it('should update the welcome screen to true if location is passed in', () => {
-    const expectation = true;
-
-    expect(renderedApp.state().WelcomeScreen).toEqual(expectation);
-  });
+  // update location
 });
