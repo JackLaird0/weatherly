@@ -57,3 +57,6 @@ import your completeMe into your Weathrly project. Populate it with this list of
 ![Wireframe](https://i.imgur.com/dPOqCwM.jpg)
 
 In our design we tried to keep a simple and inuitive layout. We used blue as a main color for weathrly because it's a calm relaxing color
+
+![Landing Page](https://i.imgur.com/yYvRqsr.png)
+![Weather Page](https://i.imgur.com/t6ky15H.png)
